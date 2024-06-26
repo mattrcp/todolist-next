@@ -8,12 +8,14 @@ const getTopics = async () => {
     });
 
     if (!res.ok) {
-      throw new Error("Failed to fetch topics");
+      throw new Error(
+        `Failed to fetch topics: ${res.status} ${res.statusText}`
+      );
     }
 
     return res.json();
   } catch (error) {
-    console.log("Error loading topics: ", error);
+    console.error("Error loading topics: ", error);
     return null; // Return null if there is an error
   }
 };
