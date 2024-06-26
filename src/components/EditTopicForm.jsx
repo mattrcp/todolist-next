@@ -12,11 +12,14 @@ const EditTopicForm = ({ id, title, description }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch(`http://localhost:3000/api/topics/${id}`, {
-        method: "PUT",
-        header: { "Content-Type": "application/json" },
-        body: JSON.stringify({ newTitle, newDescription }),
-      });
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/api/topics/${id}`,
+        {
+          method: "PUT",
+          header: { "Content-Type": "application/json" },
+          body: JSON.stringify({ newTitle, newDescription }),
+        }
+      );
 
       if (!res.ok) {
         throw new Error("Failed to submit");
