@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const getTopics = async () => {
   try {
-    const res = await fetch("http://localhost:3000/api/topics", {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/topics`, {
       // get an update data
       cache: "no-store",
     });
